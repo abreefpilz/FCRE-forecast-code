@@ -30,10 +30,10 @@ temp_oxy_chla_qaqc <- function(realtime_file,
 
   # read catwalk data and maintenance log
   # NOTE: date-times throughout this script are processed as UTC
-  catdata <- readr::read_csv("R/Catwalk.csv", skip = 4, col_names = CATDATA_COL_NAMES,
+  catdata <- readr::read_csv(realtime_file, skip = 4, col_names = CATDATA_COL_NAMES,
                              col_types = readr::cols(.default = readr::col_double(), DateTime = readr::col_datetime()))
 
-  log <- readr::read_csv("R/FCR_CAT_MaintenanceLog_2018_2022.txt", col_types = readr::cols(
+  log <- readr::read_csv(maintenance_file, col_types = readr::cols(
     .default = readr::col_character(),
     TIMESTAMP_start = readr::col_datetime("%Y-%m-%d %H:%M:%S%*"),
     TIMESTAMP_end = readr::col_datetime("%Y-%m-%d %H:%M:%S%*"),
